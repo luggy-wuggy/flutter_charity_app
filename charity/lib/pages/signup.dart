@@ -8,6 +8,7 @@ class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
 
   static String assetName = 'assets/images/world2.svg';
+  TextEditingController nameTextController = TextEditingController();
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
@@ -96,12 +97,13 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 30, right: 30),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child: Align(
                 alignment: Alignment.center,
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: nameTextController,
+                  decoration: const InputDecoration(
                     hintText: "Name",
                     icon: Icon(
                       Icons.person_outline_rounded,
@@ -150,7 +152,7 @@ class SignUpPage extends StatelessWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () async {
-                  authController.createUser(emailTextController.text, passwordTextController.text);
+                  authController.createUser(nameTextController.text, emailTextController.text, passwordTextController.text);
                 },
                 child: Container(
                   height: 80,

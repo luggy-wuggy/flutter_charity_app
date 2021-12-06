@@ -1,3 +1,4 @@
+import 'package:charity/controller/auth_controller.dart';
 import 'package:charity/controller/charity_search_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,40 +15,46 @@ class HeaderWidget extends StatelessWidget {
           const Spacer(),
           SearchBar(),
           const SizedBox(width: 15),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Stack(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    width: 45,
-                    height: 45,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/luggy.jpeg'),
+          GestureDetector(
+            onTap: () {
+              ///SIGN OUT
+              Get.find<AuthController>().signOut();
+            },
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      width: 45,
+                      height: 45,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/luggy.jpeg'),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    height: 15,
-                    width: 15,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.deepOrange[600],
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 3,
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      height: 15,
+                      width: 15,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.deepOrange[600],
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ],

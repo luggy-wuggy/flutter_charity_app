@@ -1,3 +1,9 @@
+import 'package:charity/bindings/home_bindings.dart';
+import 'package:charity/controller/user_controller.dart';
+import 'package:charity/models/user.dart';
+import 'package:charity/pages/home.dart';
+import 'package:charity/pages/login.dart';
+import 'package:charity/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -5,17 +11,48 @@ class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Rxn<User> _firebaseUser = Rxn<User>();
 
-  String? get user => _firebaseUser.value?.email;
+  User? get user => _firebaseUser.value;
 
   @override
-  void onInit() {
+  void onReady() {
+    super.onReady();
+
     _firebaseUser.bindStream(_auth.authStateChanges());
-    super.onInit();
+    ever(_firebaseUser, _setInitialScreen);
   }
 
-  void createUser(String email, String password) async {
+  _setInitialScreen(User? user) {
+    if (user == null) {
+      // if the user is not found then the user is navigated to the Register Screen
+      Get.offAll(
+        () => LoginPage(),
+      );
+    } else {
+      // if the user exists and logged in the the user is navigated to the Home Screen
+      Get.offAll(() => HomePage(), binding: HomeBinding());
+    }
+  }
+
+  // @override
+  // void onInit() {
+  //   _firebaseUser.bindStream(_auth.authStateChanges());
+  //   super.onInit();
+  // }
+
+  void createUser(String name, String email, String password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential _authResult = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      UserModel _user = UserModel(
+        id: _authResult.user?.uid,
+        name: name,
+        email: email,
+      );
+
+      if (await Database().createNewUser(_user)) {
+        Get.find<UserController>().user = _user;
+        Get.offAllNamed('/');
+      }
     } catch (e) {
       Get.snackbar(
         'Error creating account',
@@ -27,7 +64,8 @@ class AuthController extends GetxController {
 
   void login(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential _authResult = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Get.find<UserController>().user = await Database().getUser(_authResult.user!.uid);
     } catch (e) {
       Get.snackbar(
         'Error logging in',
@@ -40,6 +78,7 @@ class AuthController extends GetxController {
   void signOut() async {
     try {
       await _auth.signOut();
+      Get.find<UserController>().clear();
     } catch (e) {
       Get.snackbar(
         'Error signing out',

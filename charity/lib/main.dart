@@ -1,5 +1,7 @@
 import 'package:charity/bindings/auth_bindings.dart';
 import 'package:charity/bindings/home_bindings.dart';
+import 'package:charity/controller/auth_controller.dart';
+import 'package:charity/controller/user_controller.dart';
 import 'package:charity/pages/home.dart';
 import 'package:charity/pages/login.dart';
 import 'package:charity/pages/signup.dart';
@@ -10,7 +12,10 @@ import 'package:get/get.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) {
+    Get.put(AuthController());
+    Get.put(UserController());
+  });
 
   runApp(const MyApp());
 }
@@ -23,8 +28,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(),
-      initialRoute: "/login",
-      initialBinding: AuthBinding(),
+      home: const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
       getPages: [
         GetPage(name: "/", page: () => HomePage(), binding: HomeBinding()),
         GetPage(name: "/login", page: () => LoginPage()),
