@@ -1,8 +1,9 @@
-import 'package:charity/bindings/home_bindings.dart';
+import 'package:charity/controller/bindings/home_bindings.dart';
 import 'package:charity/controller/user_controller.dart';
 import 'package:charity/models/user.dart';
 import 'package:charity/pages/home.dart';
 import 'package:charity/pages/login.dart';
+import 'package:charity/pages/onboard.dart';
 import 'package:charity/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -24,20 +25,12 @@ class AuthController extends GetxController {
   _setInitialScreen(User? user) {
     if (user == null) {
       // if the user is not found then the user is navigated to the Register Screen
-      Get.offAll(
-        () => LoginPage(),
-      );
+      Get.offAll(() => OnboardPage());
     } else {
       // if the user exists and logged in the the user is navigated to the Home Screen
       Get.offAll(() => HomePage(), binding: HomeBinding());
     }
   }
-
-  // @override
-  // void onInit() {
-  //   _firebaseUser.bindStream(_auth.authStateChanges());
-  //   super.onInit();
-  // }
 
   void createUser(String name, String email, String password) async {
     try {

@@ -1,6 +1,5 @@
-import 'package:charity/bindings/auth_bindings.dart';
-import 'package:charity/bindings/home_bindings.dart';
 import 'package:charity/controller/auth_controller.dart';
+import 'package:charity/controller/bindings/home_bindings.dart';
 import 'package:charity/controller/user_controller.dart';
 import 'package:charity/pages/home.dart';
 import 'package:charity/pages/login.dart';
