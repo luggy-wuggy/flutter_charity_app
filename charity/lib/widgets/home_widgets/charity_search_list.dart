@@ -17,7 +17,7 @@ class CharitySearchList extends StatelessWidget {
     return Obx(
       () {
         return Expanded(
-          child: _charitySearchController.isLoading.value && _charitySearchController.charityList.isEmpty
+          child: _charitySearchController.isLoading.value
               ? const Center(
                   child: CircularProgressIndicator(
                     color: Colors.lightGreenAccent,
@@ -29,7 +29,7 @@ class CharitySearchList extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Colors.purple, Colors.purple, Colors.transparent],
-                      stops: [0.0, 0.0, 0.1], // 10% purple, 80% transparent, 10% purple
+                      stops: [0.0, 0.0, 0.1],
                     ).createShader(rect);
                   },
                   blendMode: BlendMode.dstOut,
@@ -40,7 +40,6 @@ class CharitySearchList extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       var charity = _charitySearchController.charityList[index];
-
                       return CharityCard(charity: charity);
                     },
                   ),

@@ -1,3 +1,4 @@
+import 'package:charity/constants/image_strings.dart';
 import 'package:charity/controller/auth_controller.dart';
 import 'package:charity/controller/charity_search_controller.dart';
 import 'package:flutter/material.dart';
@@ -11,52 +12,11 @@ class HeaderWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 25),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Spacer(),
           SearchBar(),
           const SizedBox(width: 15),
-          GestureDetector(
-            onTap: () {
-              ///SIGN OUT
-              Get.find<AuthController>().signOut();
-            },
-            child: SizedBox(
-              height: 50,
-              width: 50,
-              child: Stack(
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      width: 45,
-                      height: 45,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/luggy.jpeg'),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      height: 15,
-                      width: 15,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.deepOrange[600],
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 3,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+          const CircleAvatar(),
         ],
       ),
     );
@@ -75,7 +35,7 @@ class SearchBar extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 700),
           width: _charitySearchController.isSearch.value ? MediaQuery.of(context).size.width * 0.6 : 40,
-          height: _charitySearchController.isSearch.value ? 40 : 40,
+          height: 40,
           curve: Curves.easeInOutCubicEmphasized,
           decoration: BoxDecoration(
             border: null,
@@ -150,6 +110,56 @@ class SearchBar extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class CircleAvatar extends StatelessWidget {
+  const CircleAvatar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        ///SIGN OUT
+        Get.find<AuthController>().signOut();
+      },
+      child: SizedBox(
+        height: 50,
+        width: 50,
+        child: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                width: 45,
+                height: 45,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(ImageStrings.profileJPG),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                height: 15,
+                width: 15,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.deepOrange[600],
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 3,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

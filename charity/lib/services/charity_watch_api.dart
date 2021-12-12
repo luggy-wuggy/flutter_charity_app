@@ -21,8 +21,7 @@ class RemoteServices {
     var response = await client.get(APiStrings().uriByCategory(i)!);
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      print(jsonString);
-      print('gello');
+
       return charityFromJson(jsonString);
     } else {
       //show error message
