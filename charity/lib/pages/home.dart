@@ -3,6 +3,7 @@ import 'package:charity/controller/charity_search_controller.dart';
 import 'package:charity/widgets/home_widgets/category_list.dart';
 import 'package:charity/widgets/home_widgets/charity_list.dart';
 import 'package:charity/widgets/home_widgets/charity_search_list.dart';
+import 'package:charity/widgets/home_widgets/fab.dart';
 import 'package:charity/widgets/home_widgets/header.dart';
 import 'package:charity/widgets/home_widgets/title.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const MapFAB(),
       body: Container(
         padding: const EdgeInsets.only(top: 60),
         color: Colors.white,

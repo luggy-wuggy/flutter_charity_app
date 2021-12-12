@@ -1,9 +1,4 @@
-import 'package:charity/controller/rating_controller.dart';
 import 'package:get/get.dart';
-import 'package:charity/models/charity_info.dart';
-import 'package:charity/services/charity_watch_api.dart';
-
-import 'charity_controller.dart';
 
 class CategoryController extends GetxController {
   final categories = <String>[

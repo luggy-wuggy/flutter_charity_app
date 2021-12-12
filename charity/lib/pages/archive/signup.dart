@@ -152,7 +152,7 @@ class SignUpPage extends StatelessWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () async {
-                  authController.createUser(nameTextController.text, emailTextController.text, passwordTextController.text);
+                  //authController.createUser(nameTextController.text, emailTextController.text, passwordTextController.text);
                 },
                 child: Container(
                   height: 80,

@@ -1,9 +1,5 @@
 import 'package:charity/controller/auth_controller.dart';
-import 'package:charity/controller/bindings/home_bindings.dart';
 import 'package:charity/controller/user_controller.dart';
-import 'package:charity/pages/home.dart';
-import 'package:charity/pages/login.dart';
-import 'package:charity/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,11 +28,6 @@ class MyApp extends StatelessWidget {
           child: CircularProgressIndicator(),
         ),
       ),
-      getPages: [
-        GetPage(name: "/", page: () => HomePage(), binding: HomeBinding()),
-        GetPage(name: "/login", page: () => LoginPage()),
-        GetPage(name: "/signup", page: () => SignUpPage()),
-      ],
     );
   }
 }

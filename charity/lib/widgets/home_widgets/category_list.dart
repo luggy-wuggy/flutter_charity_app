@@ -62,16 +62,16 @@ class CategoryOption extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5),
-                _categoryController.selectedCategoryIndex.value == index
-                    ? Container(
-                        height: 8,
-                        width: 8,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.deepOrange[300],
-                        ),
-                      )
-                    : Container(height: 8, width: 8, color: Colors.white)
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeInCirc,
+                  height: _categoryController.selectedCategoryIndex.value == index ? 8 : 5,
+                  width: _categoryController.selectedCategoryIndex.value == index ? 8 : 5,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _categoryController.selectedCategoryIndex.value == index ? Colors.deepOrange[300] : Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
