@@ -1,4 +1,5 @@
 import 'package:charity/controller/bindings/home_bindings.dart';
+import 'package:charity/controller/page2_controller.dart';
 import 'package:charity/controller/user_controller.dart';
 import 'package:charity/models/user.dart';
 import 'package:charity/pages/home.dart';
@@ -29,22 +30,30 @@ class AuthController extends GetxController {
   }
 
   void createUser(String location) async {
-    try {
-      UserCredential _authResult = await FirebaseAuth.instance.signInAnonymously();
+    if (location != '') {
+      try {
+        UserCredential _authResult = await FirebaseAuth.instance.signInAnonymously();
 
-      UserModel _user = UserModel(
-        id: _authResult.user?.uid,
-        location: location,
-        date: DateTime.now(),
-      );
+        UserModel _user = UserModel(
+          id: _authResult.user?.uid,
+          place: Get.find<Page2Controller>().placeDetails,
+          date: DateTime.now(),
+        );
 
-      if (await Database().createNewUser(_user)) {
-        Get.find<UserController>().user = _user;
+        if (await Database().createNewUser(_user)) {
+          Get.find<UserController>().user = _user;
+        }
+      } catch (e) {
+        Get.snackbar(
+          'Error creating account',
+          e.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+        );
       }
-    } catch (e) {
+    } else {
       Get.snackbar(
         'Error creating account',
-        e.toString(),
+        "Input a location",
         snackPosition: SnackPosition.BOTTOM,
       );
     }

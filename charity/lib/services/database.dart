@@ -7,9 +7,17 @@ class Database {
   Future<bool> createNewUser(UserModel user) async {
     try {
       await _firestore.collection('users').doc(user.id).set({
-        "location": user.location,
         "date": user.date,
       });
+
+      await _firestore.collection('users').doc(user.id).collection('location').doc(user.place?.placeID).set({
+        "streetNumber": user.place?.streetNumber,
+        "street": user.place?.street,
+        "city": user.place?.city,
+        "state": user.place?.state,
+        "zipCode": user.place?.zipCode,
+      });
+
       return true;
     } catch (e) {
       print(e);

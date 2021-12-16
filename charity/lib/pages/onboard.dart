@@ -1,11 +1,14 @@
+import 'package:charity/controller/page2_controller.dart';
 import 'package:charity/widgets/onboard_widgets/page1.dart';
 import 'package:charity/widgets/onboard_widgets/page2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardPage extends StatelessWidget {
   OnboardPage({Key? key}) : super(key: key);
   final PageController pageController = PageController(initialPage: 0);
+  Page2Controller page2controller = Get.put(Page2Controller());
 
   @override
   Widget build(BuildContext context) {
