@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:charity/constants/api_google.dart';
+import 'package:charity/constants/google_maps_api_strings.dart';
 import 'package:http/http.dart';
 
 class Place {

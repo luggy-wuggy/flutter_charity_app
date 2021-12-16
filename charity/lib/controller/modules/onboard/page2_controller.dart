@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:uuid/uuid.dart';
 
-class Page2Controller extends GetxController {
+class Onboard2Controller extends GetxController {
   var textFieldTapped = false.obs;
   static var sessionToken = const Uuid().v4();
   var suggestions = <Suggestion>[].obs;

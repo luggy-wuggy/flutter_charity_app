@@ -8,7 +8,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class OnboardPage extends StatelessWidget {
   OnboardPage({Key? key}) : super(key: key);
   final PageController pageController = PageController(initialPage: 0);
-  Page2Controller page2controller = Get.put(Page2Controller());
+  final Onboard2Controller page2controller = Get.put(Onboard2Controller());
 
   @override
   Widget build(BuildContext context) {

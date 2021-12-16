@@ -10,7 +10,7 @@ import 'package:uuid/uuid.dart';
 
 class Page2 extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
-  final Page2Controller page2controller = Get.find<Page2Controller>();
+  final Onboard2Controller page2controller = Get.find<Onboard2Controller>();
 
   final Widget svgWorld = SvgPicture.asset(
     ImageStrings.worldSVG,

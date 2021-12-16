@@ -36,7 +36,7 @@ class AuthController extends GetxController {
 
         UserModel _user = UserModel(
           id: _authResult.user?.uid,
-          place: Get.find<Page2Controller>().placeDetails,
+          place: Get.find<Onboard2Controller>().placeDetails,
           date: DateTime.now(),
         );
 
