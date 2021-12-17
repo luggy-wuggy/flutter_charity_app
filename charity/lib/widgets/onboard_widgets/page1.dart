@@ -14,11 +14,14 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * .4,
-          width: MediaQuery.of(context).size.width,
+          height: screenHeight * .4,
+          width: screenWidth,
           child: Stack(
             children: [
               Padding(
@@ -66,7 +69,7 @@ class Page1 extends StatelessWidget {
             },
             child: Container(
               height: 60,
-              width: MediaQuery.of(context).size.width * 0.45,
+              width: screenWidth * 0.45,
               decoration: BoxDecoration(
                 color: const Color(0xFF57b894),
                 borderRadius: const BorderRadius.all(Radius.circular(5)),

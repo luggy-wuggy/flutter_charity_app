@@ -15,6 +15,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 60),
@@ -25,7 +28,7 @@ class LoginPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.34,
+                height: screenHeight * 0.34,
                 child: Stack(
                   children: [
                     Padding(

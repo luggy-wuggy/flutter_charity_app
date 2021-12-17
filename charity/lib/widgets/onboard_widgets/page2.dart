@@ -21,6 +21,9 @@ class Page2 extends StatelessWidget {
     Duration animationSpeed = 370.milliseconds;
     Curve animationCurves = Curves.easeInOutQuart;
 
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Obx(
       () {
         return Column(
@@ -80,7 +83,7 @@ class Page2 extends StatelessWidget {
               duration: animationSpeed,
               curve: animationCurves,
               padding: const EdgeInsets.only(left: 30, right: 30),
-              height: page2controller.textFieldTapped ? MediaQuery.of(context).size.height * 0.3 : 0,
+              height: page2controller.textFieldTapped ? screenHeight * 0.3 : 0,
               child: ListView.builder(
                 itemCount: page2controller.suggestions.length,
                 padding: EdgeInsets.zero,
@@ -105,7 +108,7 @@ class Page2 extends StatelessWidget {
                 },
                 child: Container(
                   height: 60,
-                  width: MediaQuery.of(context).size.width * 0.45,
+                  width: screenWidth * 0.45,
                   decoration: BoxDecoration(
                     color: const Color(0xFF57b894),
                     borderRadius: const BorderRadius.all(Radius.circular(3)),

@@ -30,11 +30,14 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Obx(
       () {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 700),
-          width: _charitySearchController.isSearch ? MediaQuery.of(context).size.width * 0.6 : 40,
+          width: _charitySearchController.isSearch ? screenWidth * 0.6 : 40,
           height: 40,
           curve: Curves.easeInOutCubicEmphasized,
           decoration: BoxDecoration(

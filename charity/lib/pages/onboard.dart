@@ -12,18 +12,21 @@ class OnboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 60),
         color: Colors.white,
-        height: MediaQuery.of(context).size.height,
+        height: screenHeight,
         child: SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(height: 50),
               SizedBox(
-                height: MediaQuery.of(context).size.height * .68,
-                width: MediaQuery.of(context).size.width,
+                height: screenHeight * .68,
+                width: screenWidth,
                 child: PageView(
                   scrollDirection: Axis.horizontal,
                   controller: pageController,

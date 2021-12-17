@@ -21,12 +21,13 @@ class SignUpPage extends StatelessWidget {
       height: 240,
     );
 
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(top: 60),
         color: Colors.white,
-        // height: MediaQuery.of(context).size.height,
-        // width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             Padding(
@@ -49,9 +50,9 @@ class SignUpPage extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.3,
-                width: MediaQuery.of(context).size.width,
+              child: SizedBox(
+                height: screenHeight * 0.3,
+                width: screenWidth,
                 //color: Colors.green[300],
                 child: Stack(
                   children: [
@@ -156,7 +157,7 @@ class SignUpPage extends StatelessWidget {
                 },
                 child: Container(
                   height: 80,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: screenWidth * 0.8,
                   decoration: BoxDecoration(
                     color: const Color(0xFF57b894),
                     borderRadius: const BorderRadius.all(Radius.circular(3)),
