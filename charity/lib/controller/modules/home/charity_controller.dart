@@ -3,37 +3,39 @@ import 'package:charity/models/charity_info.dart';
 import 'package:charity/services/charity_watch_api.dart';
 
 class CharityController extends GetxController {
-  var isLoading = true.obs;
-  var charityList = <Charity>[].obs;
-  //List<Charity> charityList = List.empty().obs as List<Charity>;
+  final _isLoading = true.obs;
+  final _charityList = <Charity>[].obs;
 
   @override
   void onInit() {
-    fetchCharities();
+    _fetchCharities();
     super.onInit();
   }
 
-  void fetchCharities() async {
+  bool get isLoading => _isLoading.value;
+  List<Charity> get charityList => _charityList;
+
+  void _fetchCharities() async {
     try {
-      isLoading(true);
+      _isLoading(true);
       var products = await CharityRemoteServices.fetchCharities();
       if (products.isNotEmpty) {
-        charityList.value = products;
+        _charityList.value = products;
       }
     } finally {
-      isLoading(false);
+      _isLoading(false);
     }
   }
 
   void fetchCharitiesByCategory(int i) async {
     try {
-      isLoading(true);
+      _isLoading(true);
       var products = await CharityRemoteServices.fetchCharitiesByCategory(i);
       if (products.isNotEmpty) {
-        charityList.value = products;
+        _charityList.value = products;
       }
     } finally {
-      isLoading(false);
+      _isLoading(false);
     }
   }
 }

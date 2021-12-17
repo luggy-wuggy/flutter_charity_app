@@ -27,13 +27,13 @@ class HomePage extends StatelessWidget {
             return Column(
               children: [
                 const HeaderWidget(),
-                _charitySearchController.isSearch.value ? Container() : AppTitle(),
+                _charitySearchController.isSearch ? Container() : AppTitle(),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 240),
-                  height: _charityScrollController.isTitleShowing.value ? 0 : 10,
+                  height: _charityScrollController.isTitleShowing ? 0 : 10,
                 ),
-                _charitySearchController.isSearch.value ? Container() : const CategoryList(),
-                _charitySearchController.isSearch.value ? CharitySearchList() : CharityList(),
+                _charitySearchController.isSearch ? Container() : const CategoryList(),
+                _charitySearchController.isSearch ? CharitySearchList() : CharityList(),
               ],
             );
           },

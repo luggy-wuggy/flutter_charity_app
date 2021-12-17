@@ -4,34 +4,33 @@ import 'package:charity/models/charity_info.dart';
 import 'package:charity/services/charity_watch_api.dart';
 
 class CharitySearchController extends GetxController {
-  var isLoading = false.obs;
-  var charityList = <Charity>[].obs;
-  late TextEditingController controller;
-  Rx<bool> isSearch = false.obs;
+  final Rx<bool> _isLoading = false.obs;
+  final Rx<bool> _isSearch = false.obs;
+  final RxList<Charity> _charityList = <Charity>[].obs;
+  final TextEditingController _textController = TextEditingController();
 
-  @override
-  void onInit() {
-    super.onInit();
-    controller = TextEditingController();
-  }
+  bool get isLoading => _isLoading.value;
+  bool get isSearch => _isSearch.value;
+  List<Charity> get charityList => _charityList;
+  TextEditingController get textController => _textController;
 
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
+    _textController.dispose();
   }
 
   void fetchCharitiesBySearch(String s) async {
     try {
-      isLoading(true);
+      _isLoading(true);
       var products = await CharityRemoteServices.fetchCharitiesBySearch(s);
       if (products.isNotEmpty) {
-        charityList.value = products;
+        _charityList.value = products;
       }
     } finally {
-      isLoading(false);
+      _isLoading(false);
     }
   }
 
-  void toggleIsSearch() => isSearch(!isSearch.value);
+  void toggleIsSearch() => _isSearch(!_isSearch.value);
 }

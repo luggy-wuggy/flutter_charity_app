@@ -4,51 +4,59 @@ import 'package:get/state_manager.dart';
 import 'package:uuid/uuid.dart';
 
 class Onboard2Controller extends GetxController {
-  var textFieldTapped = false.obs;
-  var suggestions = <Suggestion>[].obs;
-  late final String sessionToken;
-  late final PlaceApiProvider apiClient;
+  final RxBool _textFieldTapped = false.obs;
+  final RxList<Suggestion> _suggestions = <Suggestion>[].obs;
+  late final String _sessionToken;
+  late final PlaceApiProvider _apiClient;
 
-  TextEditingController textController = TextEditingController();
-  FocusNode focusNode = FocusNode();
-  late Place placeDetails;
+  final TextEditingController _textController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+  late Place _placeDetails;
+
+  bool get textFieldTapped => _textFieldTapped.value;
+  List<Suggestion> get suggestions => _suggestions;
+  String get sessionToken => _sessionToken;
+  PlaceApiProvider get apiClient => _apiClient;
+  TextEditingController get textController => _textController;
+  FocusNode get focusNode => _focusNode;
+  Place get placeDetails => _placeDetails;
 
   @override
   void onInit() {
-    sessionToken = const Uuid().v4();
+    _sessionToken = const Uuid().v4();
     super.onInit();
 
-    apiClient = PlaceApiProvider(sessionToken);
+    _apiClient = PlaceApiProvider(_sessionToken);
 
-    textController.addListener(() async {
-      if (textController.text.length > 1) {
-        var response = await apiClient.fetchSuggestions(textController.text);
-        suggestions.value = response;
+    _textController.addListener(() async {
+      if (_textController.text.length > 1) {
+        var response = await _apiClient.fetchSuggestions(_textController.text);
+        _suggestions.value = response;
       } else {
-        suggestions.clear();
+        _suggestions.clear();
       }
     });
 
-    focusNode.addListener(() {});
+    _focusNode.addListener(() {});
   }
 
   @override
   void dispose() {
     super.dispose();
-    textController.dispose();
-    focusNode.dispose();
+    _textController.dispose();
+    _focusNode.dispose();
   }
 
-  void toggleIsTextFieldTapped() => textFieldTapped(!textFieldTapped.value);
+  void toggleIsTextFieldTapped(bool value) => _textFieldTapped(value);
 
-  void setTextInput(String input) => textController.text = input;
+  void setTextInput(String input) => _textController.text = input;
 
   void setSuggestion(String description, String id) async {
-    textController.text = description;
-    textController.selection = TextSelection.collapsed(offset: textController.text.length);
-    textFieldTapped.value = false;
-    focusNode.unfocus();
+    _textController.text = description;
+    _textController.selection = TextSelection.collapsed(offset: _textController.text.length);
+    _textFieldTapped.value = false;
+    _focusNode.unfocus();
 
-    placeDetails = await apiClient.getPlaceDetailFromId(id);
+    _placeDetails = await _apiClient.getPlaceDetailFromId(id);
   }
 }

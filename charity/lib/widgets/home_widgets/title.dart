@@ -18,10 +18,10 @@ class AppTitle extends StatelessWidget {
         () {
           return AnimatedOpacity(
             duration: const Duration(milliseconds: 200),
-            opacity: _charityScrollController.isTitleShowing.value ? 1 : 0,
+            opacity: _charityScrollController.isTitleShowing ? 1 : 0,
             child: AnimatedContainer(
-              height: _charityScrollController.isTitleShowing.value ? MediaQuery.of(context).size.height * 0.06 : 0,
-              width: _charityScrollController.isTitleShowing.value ? MediaQuery.of(context).size.width * 0.5 : 0,
+              height: _charityScrollController.isTitleShowing ? MediaQuery.of(context).size.height * 0.06 : 0,
+              width: _charityScrollController.isTitleShowing ? MediaQuery.of(context).size.width * 0.5 : 0,
               margin: const EdgeInsets.only(left: 25),
               duration: const Duration(milliseconds: 240),
               child: FittedBox(

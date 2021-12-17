@@ -29,12 +29,12 @@ class Page2 extends StatelessWidget {
             AnimatedOpacity(
               duration: animationSpeed,
               curve: animationCurves,
-              opacity: page2controller.textFieldTapped.value ? 0 : 1,
+              opacity: page2controller.textFieldTapped ? 0 : 1,
               child: AnimatedContainer(
                 duration: animationSpeed,
                 curve: animationCurves,
-                height: page2controller.textFieldTapped.value ? 0 : 240,
-                width: page2controller.textFieldTapped.value ? 0 : 240,
+                height: page2controller.textFieldTapped ? 0 : 240,
+                width: page2controller.textFieldTapped ? 0 : 240,
                 alignment: Alignment.topCenter,
                 child: svgWorld,
               ),
@@ -59,10 +59,10 @@ class Page2 extends StatelessWidget {
                 alignment: Alignment.center,
                 child: TextField(
                   onTap: () {
-                    page2controller.textFieldTapped.value = true;
+                    page2controller.toggleIsTextFieldTapped(true);
                   },
                   onSubmitted: (String s) {
-                    page2controller.textFieldTapped.value = false;
+                    page2controller.toggleIsTextFieldTapped(false);
                   },
                   controller: page2controller.textController,
                   focusNode: page2controller.focusNode,
@@ -80,7 +80,7 @@ class Page2 extends StatelessWidget {
               duration: animationSpeed,
               curve: animationCurves,
               padding: const EdgeInsets.only(left: 30, right: 30),
-              height: page2controller.textFieldTapped.value ? MediaQuery.of(context).size.height * 0.3 : 0,
+              height: page2controller.textFieldTapped ? MediaQuery.of(context).size.height * 0.3 : 0,
               child: ListView.builder(
                 itemCount: page2controller.suggestions.length,
                 padding: EdgeInsets.zero,

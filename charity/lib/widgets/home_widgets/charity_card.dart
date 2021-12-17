@@ -47,15 +47,15 @@ class CharityCard extends StatelessWidget {
                       width: 80,
                       child: GetBuilder<RatingAnimationController>(
                         builder: (_controller) {
-                          Get.find<RatingAnimationController>().startAnimation(charity);
+                          _controller.startAnimation(charity);
 
                           return CircularProgressIndicator(
-                            value: _controller.getRatingValue().value,
+                            value: _controller.ratingValue.value,
                             strokeWidth: 7,
                             color: Color.lerp(
                               Colors.limeAccent,
                               Colors.green[600],
-                              _controller.getRatingValue().value,
+                              _controller.ratingValue.value,
                             ),
                           );
                         },

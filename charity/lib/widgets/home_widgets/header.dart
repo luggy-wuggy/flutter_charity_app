@@ -34,14 +34,14 @@ class SearchBar extends StatelessWidget {
       () {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 700),
-          width: _charitySearchController.isSearch.value ? MediaQuery.of(context).size.width * 0.6 : 40,
+          width: _charitySearchController.isSearch ? MediaQuery.of(context).size.width * 0.6 : 40,
           height: 40,
           curve: Curves.easeInOutCubicEmphasized,
           decoration: BoxDecoration(
             border: null,
             color: Colors.white,
             boxShadow: [
-              _charitySearchController.isSearch.value
+              _charitySearchController.isSearch
                   ? BoxShadow(
                       color: Colors.grey[400] as Color,
                       blurRadius: 3,
@@ -61,11 +61,11 @@ class SearchBar extends StatelessWidget {
                 right: 10,
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 600),
-                  opacity: _charitySearchController.isSearch.value ? 1 : 0,
+                  opacity: _charitySearchController.isSearch ? 1 : 0,
                   curve: Curves.easeOutQuint,
                   child: GestureDetector(
                     onTap: () {
-                      if (_charitySearchController.isSearch.value) {
+                      if (_charitySearchController.isSearch) {
                         _charitySearchController.toggleIsSearch();
                       }
                     },
@@ -83,7 +83,7 @@ class SearchBar extends StatelessWidget {
                   onSubmitted: (String s) {
                     _charitySearchController.fetchCharitiesBySearch(s);
                   },
-                  controller: _charitySearchController.controller,
+                  controller: _charitySearchController.textController,
                   cursorColor: Colors.grey[300],
                   decoration: const InputDecoration(
                     hintText: "Search charity",
@@ -95,7 +95,7 @@ class SearchBar extends StatelessWidget {
                 left: 10,
                 child: GestureDetector(
                   onTap: () {
-                    if (!_charitySearchController.isSearch.value) {
+                    if (!_charitySearchController.isSearch) {
                       _charitySearchController.toggleIsSearch();
                     }
                   },

@@ -3,8 +3,11 @@ import 'package:get/state_manager.dart';
 import 'package:flutter/material.dart';
 
 class RatingAnimationController extends GetxController with SingleGetTickerProviderMixin {
-  late AnimationController _animationRatingController;
+  late final AnimationController _animationRatingController;
   late Animation<double> _ratingValue;
+
+  AnimationController get animationRatingController => _animationRatingController;
+  Animation<double> get ratingValue => _ratingValue;
 
   @override
   void onInit() {
@@ -18,12 +21,10 @@ class RatingAnimationController extends GetxController with SingleGetTickerProvi
     super.onClose();
   }
 
-  AnimationController getController() => _animationRatingController;
-  Animation<double> getRatingValue() => _ratingValue;
-
   Future<void> startAnimation(Charity charity) async {
-    _ratingValue = Tween<double>(begin: 0, end: (charity.currentRating?.score)! / 100).animate(CurvedAnimation(parent: _animationRatingController, curve: Curves.easeInOutQuint))
-      ..addListener(() => update());
+    _ratingValue = Tween<double>(begin: 0, end: (charity.currentRating?.score)! / 100).animate(
+      CurvedAnimation(parent: _animationRatingController, curve: Curves.easeInOutQuint),
+    )..addListener(() => update());
     await _animationRatingController.forward();
   }
 

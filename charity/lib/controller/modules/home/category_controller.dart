@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController {
-  final categories = <String>[
+  final _categories = <String>[
     "For you",
     "Animals",
     "Art & Culture",
@@ -14,10 +14,10 @@ class CategoryController extends GetxController {
     "Religion",
     "Research",
   ].obs;
+  final _selectedCategoryIndex = 0.obs;
 
-  var selectedCategoryIndex = 0.obs;
+  int get selectedCategoryIndex => _selectedCategoryIndex.value;
+  List<String> get categories => _categories;
 
-  void selectCategory(int index) {
-    selectedCategoryIndex.value = index;
-  }
+  void selectCategory(int index) => _selectedCategoryIndex.value = index;
 }

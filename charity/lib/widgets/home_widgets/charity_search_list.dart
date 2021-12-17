@@ -15,7 +15,7 @@ class CharitySearchList extends StatelessWidget {
     return Obx(
       () {
         return Expanded(
-          child: _charitySearchController.isLoading.value
+          child: _charitySearchController.isLoading
               ? const Center(
                   child: CircularProgressIndicator(
                     color: Colors.lightGreenAccent,

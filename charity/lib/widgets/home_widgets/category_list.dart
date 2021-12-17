@@ -50,11 +50,11 @@ class CategoryOption extends StatelessWidget {
               children: [
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 320),
-                  style: _categoryController.selectedCategoryIndex.value == index
-                      ? _charityScrollController.isTitleShowing.value
+                  style: _categoryController.selectedCategoryIndex == index
+                      ? _charityScrollController.isTitleShowing
                           ? kCategorySelected
                           : kCategorySelectedBig
-                      : _charityScrollController.isTitleShowing.value
+                      : _charityScrollController.isTitleShowing
                           ? kCategoryUnselected
                           : kCategoryUnselectedBig,
                   child: Text(
@@ -65,11 +65,11 @@ class CategoryOption extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeInCirc,
-                  height: _categoryController.selectedCategoryIndex.value == index ? 8 : 5,
-                  width: _categoryController.selectedCategoryIndex.value == index ? 8 : 5,
+                  height: _categoryController.selectedCategoryIndex == index ? 8 : 5,
+                  width: _categoryController.selectedCategoryIndex == index ? 8 : 5,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _categoryController.selectedCategoryIndex.value == index ? Colors.deepOrange[300] : Colors.white,
+                    color: _categoryController.selectedCategoryIndex == index ? Colors.deepOrange[300] : Colors.white,
                   ),
                 ),
               ],
