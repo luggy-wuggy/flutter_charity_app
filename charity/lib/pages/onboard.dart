@@ -1,4 +1,4 @@
-import 'package:charity/controller/page2_controller.dart';
+import 'package:charity/controller/modules/onboard/page2_controller.dart';
 import 'package:charity/widgets/onboard_widgets/page1.dart';
 import 'package:charity/widgets/onboard_widgets/page2.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:charity/controller/rating_controller.dart';
+import 'package:charity/controller/modules/home/rating_controller.dart';
 import 'package:charity/models/charity_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -24,7 +24,7 @@ class CharitySearchController extends GetxController {
   void fetchCharitiesBySearch(String s) async {
     try {
       isLoading(true);
-      var products = await RemoteServices.fetchCharitiesBySearch(s);
+      var products = await CharityRemoteServices.fetchCharitiesBySearch(s);
       if (products.isNotEmpty) {
         charityList.value = products;
       }

@@ -1,6 +1,6 @@
 import 'package:charity/controller/bindings/home_bindings.dart';
-import 'package:charity/controller/page2_controller.dart';
-import 'package:charity/controller/user_controller.dart';
+import 'package:charity/controller/modules/onboard/page2_controller.dart';
+import 'package:charity/controller/modules/authentication/user_controller.dart';
 import 'package:charity/models/user.dart';
 import 'package:charity/pages/home.dart';
 import 'package:charity/pages/onboard.dart';

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-class APiStrings {
+class CharityApiStrings {
   static var charityURI = Uri.parse('https://api.data.charitynavigator.org/v2/Organizations?app_id=a71b11e3&app_key=14e84a0b33b1264879cf00974fe28b0c&rated=TRUE&pageSize=10');
 
   Uri? uriByCategory(int i) {

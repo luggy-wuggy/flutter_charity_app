@@ -5,8 +5,8 @@ import 'package:uuid/uuid.dart';
 
 class Onboard2Controller extends GetxController {
   var textFieldTapped = false.obs;
-  static var sessionToken = const Uuid().v4();
   var suggestions = <Suggestion>[].obs;
+  late final String sessionToken;
   late final PlaceApiProvider apiClient;
 
   TextEditingController textController = TextEditingController();
@@ -15,6 +15,7 @@ class Onboard2Controller extends GetxController {
 
   @override
   void onInit() {
+    sessionToken = const Uuid().v4();
     super.onInit();
 
     apiClient = PlaceApiProvider(sessionToken);
@@ -49,6 +50,5 @@ class Onboard2Controller extends GetxController {
     focusNode.unfocus();
 
     placeDetails = await apiClient.getPlaceDetailFromId(id);
-    //print('${placesDetail.zipCode}');
   }
 }

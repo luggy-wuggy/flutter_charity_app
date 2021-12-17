@@ -1,10 +1,8 @@
-import 'package:charity/controller/charity_scroll_controller.dart';
-import 'package:charity/controller/charity_search_controller.dart';
-import 'package:charity/controller/rating_controller.dart';
+import 'package:charity/controller/modules/home/charity_scroll_controller.dart';
+import 'package:charity/controller/modules/home/charity_search_controller.dart';
 import 'package:charity/widgets/home_widgets/charity_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CharitySearchList extends StatelessWidget {
   final CharitySearchController _charitySearchController = Get.find();

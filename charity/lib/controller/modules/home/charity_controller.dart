@@ -16,7 +16,7 @@ class CharityController extends GetxController {
   void fetchCharities() async {
     try {
       isLoading(true);
-      var products = await RemoteServices.fetchCharities();
+      var products = await CharityRemoteServices.fetchCharities();
       if (products.isNotEmpty) {
         charityList.value = products;
       }
@@ -28,7 +28,7 @@ class CharityController extends GetxController {
   void fetchCharitiesByCategory(int i) async {
     try {
       isLoading(true);
-      var products = await RemoteServices.fetchCharitiesByCategory(i);
+      var products = await CharityRemoteServices.fetchCharitiesByCategory(i);
       if (products.isNotEmpty) {
         charityList.value = products;
       }

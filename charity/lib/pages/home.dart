@@ -1,5 +1,5 @@
-import 'package:charity/controller/charity_scroll_controller.dart';
-import 'package:charity/controller/charity_search_controller.dart';
+import 'package:charity/controller/modules/home/charity_scroll_controller.dart';
+import 'package:charity/controller/modules/home/charity_search_controller.dart';
 import 'package:charity/widgets/home_widgets/category_list.dart';
 import 'package:charity/widgets/home_widgets/charity_list.dart';
 import 'package:charity/widgets/home_widgets/charity_search_list.dart';

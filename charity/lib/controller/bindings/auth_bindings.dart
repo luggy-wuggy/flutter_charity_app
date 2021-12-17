@@ -1,5 +1,5 @@
-import 'package:charity/controller/auth_controller.dart';
-import 'package:charity/controller/user_controller.dart';
+import 'package:charity/controller/modules/authentication/auth_controller.dart';
+import 'package:charity/controller/modules/authentication/user_controller.dart';
 import 'package:get/instance_manager.dart';
 
 // class AuthBinding extends Bindings {

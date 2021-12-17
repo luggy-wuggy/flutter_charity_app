@@ -1,12 +1,10 @@
 import 'package:charity/constants/image_strings.dart';
-import 'package:charity/controller/auth_controller.dart';
-import 'package:charity/controller/page2_controller.dart';
-import 'package:charity/services/google_location_ac.dart';
+import 'package:charity/controller/modules/authentication/auth_controller.dart';
+import 'package:charity/controller/modules/onboard/page2_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:uuid/uuid.dart';
 
 class Page2 extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
