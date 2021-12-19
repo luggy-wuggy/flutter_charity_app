@@ -3,6 +3,7 @@ import 'package:charity/models/charity_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class CharityCard extends StatelessWidget {
   const CharityCard({

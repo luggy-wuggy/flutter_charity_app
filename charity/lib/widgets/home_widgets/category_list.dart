@@ -38,9 +38,7 @@ class CategoryOption extends StatelessWidget {
       () {
         return GestureDetector(
           onTap: () {
-            _categoryController.selectCategory(index);
-            Get.find<CharityController>().fetchCharitiesByCategory(index);
-            Get.find<RatingAnimationController>().resetAnimation();
+            _categoryController.tapCategoryOption(index);
           },
           child: Container(
             alignment: Alignment.topCenter,
@@ -58,7 +56,7 @@ class CategoryOption extends StatelessWidget {
                           ? kCategoryUnselected
                           : kCategoryUnselectedBig,
                   child: Text(
-                    _categoryController.categories[index],
+                    _categoryController.categories[index].title,
                   ),
                 ),
                 const SizedBox(height: 5),

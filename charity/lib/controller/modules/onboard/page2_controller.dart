@@ -49,8 +49,6 @@ class Onboard2Controller extends GetxController {
 
   void toggleIsTextFieldTapped(bool value) => _textFieldTapped(value);
 
-  void setTextInput(String input) => _textController.text = input;
-
   void setSuggestion(String description, String id) async {
     _textController.text = description;
     _textController.selection = TextSelection.collapsed(offset: _textController.text.length);

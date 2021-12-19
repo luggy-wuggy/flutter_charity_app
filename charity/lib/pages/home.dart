@@ -1,3 +1,5 @@
+import 'package:charity/controller/modules/home/category_controller.dart';
+import 'package:charity/controller/modules/home/charity_controller.dart';
 import 'package:charity/controller/modules/home/charity_scroll_controller.dart';
 import 'package:charity/controller/modules/home/charity_search_controller.dart';
 import 'package:charity/widgets/home_widgets/category_list.dart';
@@ -33,7 +35,22 @@ class HomePage extends StatelessWidget {
                   height: _charityScrollController.isTitleShowing ? 0 : 10,
                 ),
                 _charitySearchController.isSearch ? Container() : const CategoryList(),
-                _charitySearchController.isSearch ? CharitySearchList() : CharityList(),
+                Expanded(
+                  child: PageView.builder(
+                    controller: Get.find<CategoryController>().pageController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: Get.find<CategoryController>().categories.length,
+                    onPageChanged: (int page) {
+                      Get.find<CategoryController>().changeCategory(page);
+                      // Get.find<CategoryController>().setPage(page);
+                    },
+                    itemBuilder: (context, index) {
+                      return CharityList(index: index);
+                    },
+                  ),
+                ),
+
+                //_charitySearchController.isSearch ? CharitySearchList() : CharityList(),
               ],
             );
           },

@@ -44,6 +44,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   animations: ^2.0.2
   uuid: ^3.0.5
+  percent_indicator: ^3.4.0
 
 dev_dependencies:
   flutter_test:
