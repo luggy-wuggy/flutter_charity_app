@@ -37,7 +37,7 @@ class CharityList extends StatelessWidget {
                 child: ListView.builder(
                   padding: const EdgeInsets.only(top: 20),
                   itemCount: _categoryController.categories[index].charityList.length,
-                  controller: _charityScrollController.controller,
+                  //controller: _charityScrollController.controller,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, i) {
                     var charity = _categoryController.categories[index].charityList[i];
