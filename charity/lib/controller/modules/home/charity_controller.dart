@@ -5,7 +5,6 @@ import 'package:charity/services/charity_watch_api.dart';
 
 class CharityController extends GetxController {
   final _isLoading = true.obs;
-  //final _charityForYou = <Charity>[].obs;
 
   @override
   void onInit() {
@@ -14,7 +13,6 @@ class CharityController extends GetxController {
   }
 
   bool get isLoading => _isLoading.value;
-  //List<Charity> get charityForYou => _charityForYou;
 
   void _fetchInitialCharities() async {
     try {
@@ -22,8 +20,6 @@ class CharityController extends GetxController {
       var products = await CharityRemoteServices.fetchCharities();
       if (products.isNotEmpty) {
         Get.find<CategoryController>().categories[0].charityList = products;
-        //_charityForYou.value = products;
-        //print(_charityForYou.value[0].category!.categoryName);
       }
     } finally {
       _isLoading(false);
@@ -37,14 +33,10 @@ class CharityController extends GetxController {
       if (products.isNotEmpty) {
         _isLoading(false);
         return products;
-        //_charityForYou.value = products;
-        //print(_charityForYou.value[0].category!.categoryName);
       }
     } catch (e) {
       return [];
     }
     return [];
   }
-
-  void selectCharityList(int i) async {}
 }

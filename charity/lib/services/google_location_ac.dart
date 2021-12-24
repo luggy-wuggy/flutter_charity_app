@@ -1,43 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:charity/constants/google_maps_api_strings.dart';
+import 'package:charity/models/google_location.dart';
 import 'package:http/http.dart';
-
-class Place {
-  String? placeID;
-  String? streetNumber;
-  String? street;
-  String? city;
-  String? state;
-  String? zipCode;
-
-  Place({
-    this.streetNumber,
-    this.street,
-    this.city,
-    this.state,
-    this.zipCode,
-  });
-
-  @override
-  String toString() {
-    return 'Place(placeID: $placeID, streetNumber: $streetNumber, street: $street, city: $city, state: $state, zipCode: $zipCode)';
-  }
-}
-
-// For storing our result
-class Suggestion {
-  final String placeId;
-  final String description;
-
-  Suggestion(this.placeId, this.description);
-
-  @override
-  String toString() {
-    return 'Suggestion(description: $description, placeId: $placeId)';
-  }
-}
 
 class PlaceApiProvider {
   final client = Client();
@@ -103,9 +68,6 @@ class PlaceApiProvider {
             place.state = c['short_name'];
           }
         });
-        print(stringRequest);
-        print(result);
-        print(place);
         return place;
       }
       throw Exception(result['error_message']);

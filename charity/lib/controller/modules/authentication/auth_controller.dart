@@ -44,6 +44,7 @@ class AuthController extends GetxController {
           Get.find<UserController>().user = _user;
         }
       } catch (e) {
+        print('snack bar catch');
         Get.snackbar(
           'Error creating account',
           e.toString(),
@@ -51,6 +52,7 @@ class AuthController extends GetxController {
         );
       }
     } else {
+      print('snack bar empty textfield');
       Get.snackbar(
         'Error creating account',
         "Input a location",
@@ -64,6 +66,7 @@ class AuthController extends GetxController {
       await _auth.signOut();
       Get.find<UserController>().clear();
     } catch (e) {
+      print('snack bar signout');
       Get.snackbar(
         'Error signing out',
         e.toString(),

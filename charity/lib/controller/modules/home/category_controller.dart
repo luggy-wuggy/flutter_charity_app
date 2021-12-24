@@ -43,20 +43,6 @@ class CategoryController extends GetxController {
       );
     } else {
       _pageController.jumpToPage(index);
-      //_pageController.animateToPage(index, duration: 650.milliseconds, curve: Curves.easeIn);
     }
   }
-
-  // void tapCategoryOption(int index) async {
-  //   _selectedCategoryIndex.value = index;
-  // }
-
-  // void scrollCategory(int index) async {
-  //   print('SCROLL');
-  //   if (_categories[index].charityList.isEmpty) {
-  //     _categories[index].charityList = await Get.find<CharityController>().fetchCharitiesByCategory(index);
-  //   }
-
-  //   _selectedCategoryIndex.value = index;
-  // }
 }

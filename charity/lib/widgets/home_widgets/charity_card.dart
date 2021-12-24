@@ -1,5 +1,7 @@
-import 'package:charity/controller/modules/home/rating_controller.dart';
+import 'package:charity/controller/modules/authentication/auth_controller.dart';
+import 'package:charity/controller/modules/home/favorite_controller.dart';
 import 'package:charity/models/charity_info.dart';
+import 'package:charity/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -146,23 +148,20 @@ class FavoriteIcon extends StatefulWidget {
 }
 
 class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixin {
-  bool isFavorited = false;
+  late bool isFavorited;
 
   late AnimationController sizeController;
-  late AnimationController colorController;
   late Animation<double> sizeValue;
-  late Animation colorValue;
 
   @override
   void initState() {
     super.initState();
+
+    isFavorited = Get.find<FavoriteController>().favoriteCharities.map((e) => e.ein).toList().contains(widget.charity.ein);
+
     sizeController = AnimationController(
       vsync: this,
       duration: 300.milliseconds,
-    );
-    colorController = AnimationController(
-      vsync: this,
-      duration: 450.milliseconds,
     );
 
     sizeValue = Tween<double>(begin: 25, end: 35).animate(
@@ -179,15 +178,6 @@ class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixi
           sizeController.reverse();
         }
       });
-
-    colorValue = ColorTween(begin: Colors.white, end: Colors.red[600]).animate(
-      CurvedAnimation(
-        parent: colorController,
-        curve: Curves.easeInOutQuint,
-      ),
-    )..addListener(() {
-        setState(() {});
-      });
   }
 
   @override
@@ -201,27 +191,22 @@ class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixi
             isFavorited = !isFavorited;
           });
           sizeController.forward();
+
           if (isFavorited) {
-            colorController.forward();
+            Database().addFavorite(Get.find<AuthController>().user!.uid, widget.charity);
           } else {
-            colorController.reverse();
+            Database().removeFavorite(Get.find<AuthController>().user!.uid, widget.charity);
           }
         },
         child: SizedBox(
           height: sizeValue.value,
           width: sizeValue.value,
           child: FittedBox(
-            fit: BoxFit.cover,
-            child: isFavorited
-                ? Icon(
-                    Icons.favorite_rounded,
-                    color: colorValue.value,
-                  )
-                : Icon(
-                    Icons.favorite_border_rounded,
-                    color: Colors.grey[300],
-                  ),
-          ),
+              fit: BoxFit.cover,
+              child: Icon(
+                isFavorited ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                color: isFavorited ? Colors.red[600] : Colors.grey[300],
+              )),
         ),
       ),
     );

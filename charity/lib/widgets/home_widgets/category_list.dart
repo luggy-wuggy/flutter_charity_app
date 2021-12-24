@@ -1,26 +1,34 @@
 import 'package:charity/constants/styles.dart';
 import 'package:charity/controller/modules/home/category_controller.dart';
-import 'package:charity/controller/modules/home/charity_controller.dart';
-import 'package:charity/controller/modules/home/charity_scroll_controller.dart';
-import 'package:charity/controller/modules/home/rating_controller.dart';
+import 'package:charity/controller/modules/home/archive/charity_scroll_controller.dart';
+import 'package:charity/controller/modules/home/archive/rating_controller.dart';
+import 'package:charity/controller/modules/home/charity_search_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryList extends StatelessWidget {
-  const CategoryList({Key? key}) : super(key: key);
+  CategoryList({Key? key}) : super(key: key);
+
+  final CharitySearchController _charitySearchController = Get.find<CharitySearchController>();
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 45,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(right: 25),
-        scrollDirection: Axis.horizontal,
-        itemCount: Get.find<CategoryController>().categories.length,
-        itemBuilder: (context, index) {
-          return CategoryOption(index: index);
-        },
-      ),
+    return Obx(
+      () {
+        return !_charitySearchController.isSearch
+            ? SizedBox(
+                height: 45,
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(right: 25),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: Get.find<CategoryController>().categories.length,
+                  itemBuilder: (context, index) {
+                    return CategoryOption(index: index);
+                  },
+                ),
+              )
+            : Container();
+      },
     );
   }
 }
@@ -28,7 +36,6 @@ class CategoryList extends StatelessWidget {
 class CategoryOption extends StatelessWidget {
   final int index;
   final CategoryController _categoryController = Get.find();
-  final CharityScrollController _charityScrollController = Get.find();
 
   CategoryOption({Key? key, required this.index}) : super(key: key);
 
@@ -48,13 +55,7 @@ class CategoryOption extends StatelessWidget {
               children: [
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 320),
-                  style: _categoryController.selectedCategoryIndex == index
-                      ? _charityScrollController.isTitleShowing
-                          ? kCategorySelected
-                          : kCategorySelectedBig
-                      : _charityScrollController.isTitleShowing
-                          ? kCategoryUnselected
-                          : kCategoryUnselectedBig,
+                  style: _categoryController.selectedCategoryIndex == index ? kCategorySelected : kCategoryUnselected,
                   child: Text(
                     _categoryController.categories[index].title,
                   ),
