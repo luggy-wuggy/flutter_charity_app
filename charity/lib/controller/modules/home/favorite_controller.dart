@@ -1,10 +1,11 @@
 import 'package:charity/controller/modules/authentication/auth_controller.dart';
+import 'package:charity/models/charity_info.dart';
 import 'package:charity/models/favorite_charity.dart';
 import 'package:charity/services/database.dart';
 import 'package:get/get.dart';
 
 class FavoriteController extends GetxController {
-  final RxList<FavoriteCharity> _favoriteCharities = RxList<FavoriteCharity>();
+  final _favoriteCharities = <FavoriteCharity>[].obs;
 
   List<FavoriteCharity> get favoriteCharities => _favoriteCharities;
 
@@ -15,15 +16,7 @@ class FavoriteController extends GetxController {
     _favoriteCharities.bindStream(Database().favoritesStream(uid));
   }
 
-  void printCharities() {
-    print('NUMBER OF CHARITIES: ${_favoriteCharities.length}');
-    print("================================================");
-    for (var charity in _favoriteCharities) {
-      print('ID: ${charity.ein}');
-      print('NAME: ${charity.title}');
-      print('CATEGORY: ${charity.category}');
-      print('date: ${charity.date}');
-    }
-    print("================================================");
+  bool charityContainsFavorite(Charity charity) {
+    return _favoriteCharities.map((e) => e.ein).toList().contains(charity.ein);
   }
 }

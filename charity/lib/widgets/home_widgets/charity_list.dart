@@ -2,6 +2,7 @@ import 'package:charity/controller/modules/home/category_controller.dart';
 import 'package:charity/controller/modules/home/charity_controller.dart';
 import 'package:charity/controller/modules/home/archive/charity_scroll_controller.dart';
 import 'package:charity/controller/modules/home/charity_search_controller.dart';
+import 'package:charity/controller/modules/home/favorite_controller.dart';
 import 'package:charity/widgets/home_widgets/charity_search_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,6 +26,7 @@ class CharityListPageView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: _categoryController.categories.length,
                   onPageChanged: (int page) {
+                    //Get.find<FavoriteController>().favoriteCharities.refresh();
                     _categoryController.changeCategory(page);
                   },
                   itemBuilder: (context, index) {

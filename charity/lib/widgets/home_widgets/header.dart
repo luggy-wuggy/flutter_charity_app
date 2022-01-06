@@ -1,7 +1,6 @@
 import 'package:charity/constants/image_strings.dart';
 import 'package:charity/controller/modules/authentication/auth_controller.dart';
 import 'package:charity/controller/modules/home/charity_search_controller.dart';
-import 'package:charity/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

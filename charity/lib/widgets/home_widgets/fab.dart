@@ -8,7 +8,7 @@ class MapFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OpenContainer(
-      transitionDuration: const Duration(seconds: 1),
+      transitionDuration: const Duration(milliseconds: 650),
       tappable: false,
       openBuilder: (context, closedContainer) => const MapPage(),
       closedShape: const CircleBorder(),
