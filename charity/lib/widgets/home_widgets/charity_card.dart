@@ -22,17 +22,17 @@ class CharityCard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
-            borderRadius: const BorderRadius.all(
+            borderRadius: BorderRadius.all(
               Radius.circular(8),
             ),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.grey[400] as Color,
+                color: Color(0xFFBDBDBD),
                 blurRadius: 5,
-                offset: const Offset(-5, 5),
+                offset: Offset(-5, 5),
                 spreadRadius: 1.7,
               )
             ],
@@ -46,7 +46,8 @@ class CharityCard extends StatelessWidget {
                 Radius.circular(9),
               ),
             ),
-            openBuilder: (context, closedContainer) => CharityPage(charity: charity),
+            openBuilder: (context, closedContainer) =>
+                CharityPage(charity: charity),
             closedBuilder: (context, openContainer) {
               return Row(
                 children: [
@@ -85,10 +86,10 @@ class CharityCard extends StatelessWidget {
                         circularStrokeCap: CircularStrokeCap.round,
                         progressColor: Color.lerp(
                           Colors.lime[50],
-                          Colors.green[600],
+                          Color(0xFF43A047),
                           (charity.currentRating?.score)! / 100,
                         ),
-                        backgroundColor: Colors.grey[200]!,
+                        backgroundColor: Color(0xFFEEEEEE),
                       ),
                     ),
                   ),
@@ -116,8 +117,8 @@ class CharityCard extends StatelessWidget {
                           Text(
                             "${charity.tagLine}",
                             style: GoogleFonts.lora(
-                              textStyle: TextStyle(
-                                color: Colors.grey[800],
+                              textStyle: const TextStyle(
+                                color: Color(0xFF424242),
                                 fontSize: 13,
                               ),
                             ),
@@ -126,8 +127,8 @@ class CharityCard extends StatelessWidget {
                           Text(
                             "${charity.mailingAddress?.city}, ${charity.mailingAddress?.stateOrProvince}",
                             style: GoogleFonts.lora(
-                              textStyle: TextStyle(
-                                color: Colors.grey[800],
+                              textStyle: const TextStyle(
+                                color: Color(0xFF424242),
                                 fontSize: 11,
                               ),
                             ),
@@ -156,7 +157,8 @@ class FavoriteIcon extends StatefulWidget {
   FavoriteIconState createState() => FavoriteIconState();
 }
 
-class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixin {
+class FavoriteIconState extends State<FavoriteIcon>
+    with TickerProviderStateMixin {
   late bool isFavorited;
 
   late AnimationController sizeController;
@@ -204,9 +206,11 @@ class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixi
           });
 
           if (isFavorited) {
-            Database().addFavorite(Get.find<AuthController>().user!.uid, widget.charity);
+            Database().addFavorite(
+                Get.find<AuthController>().user!.uid, widget.charity);
           } else {
-            Database().removeFavorite(Get.find<AuthController>().user!.uid, widget.charity);
+            Database().removeFavorite(
+                Get.find<AuthController>().user!.uid, widget.charity);
           }
         },
         child: SizedBox(
@@ -215,8 +219,10 @@ class FavoriteIconState extends State<FavoriteIcon> with TickerProviderStateMixi
           child: FittedBox(
             fit: BoxFit.cover,
             child: Icon(
-              isFavorited ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-              color: isFavorited ? Colors.red[600] : Colors.grey[400],
+              isFavorited
+                  ? Icons.favorite_rounded
+                  : Icons.favorite_border_rounded,
+              color: isFavorited ? Colors.red[600] : Color(0xFFBDBDBD),
             ),
           ),
         ),

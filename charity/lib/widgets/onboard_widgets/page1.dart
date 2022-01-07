@@ -50,8 +50,8 @@ class Page1 extends StatelessWidget {
         Text(
           'A few small steps before\nyou start giving . . .',
           style: GoogleFonts.lato(
-            textStyle: TextStyle(
-              color: Colors.grey[700],
+            textStyle:const TextStyle(
+              color: Color(0xFF616161),
               fontSize: 18,
             ),
           ),
@@ -70,15 +70,15 @@ class Page1 extends StatelessWidget {
             child: Container(
               height: 60,
               width: screenWidth * 0.45,
-              decoration: BoxDecoration(
-                color: const Color(0xFF57b894),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
+              decoration: const BoxDecoration(
+                color: Color(0xFF57b894),
+                borderRadius:  BorderRadius.all(Radius.circular(5)),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.green[100]!,
+                    color:  Color(0xFFC8E6C9),
                     blurRadius: 10,
                     spreadRadius: 3,
-                    offset: const Offset(-4, 8),
+                    offset: Offset(-4, 8),
                   ),
                 ],
               ),

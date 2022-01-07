@@ -42,6 +42,7 @@ class OnboardPage extends StatelessWidget {
                 count: 2,
                 effect: const WormEffect(
                   activeDotColor: Color(0xFF57b894),
+                  dotColor: Color(0xFF9E9E9E),
                   spacing: 16,
                 ),
               )

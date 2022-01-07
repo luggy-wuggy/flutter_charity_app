@@ -18,7 +18,7 @@ final TextStyle kCategorySelected = GoogleFonts.lato(
 final TextStyle kCategoryUnselected = GoogleFonts.lato(
   textStyle: const TextStyle(
     fontWeight: FontWeight.w500,
-    color: Colors.grey,
+    color: Color(0xFF9E9E9E),
     fontSize: 15,
   ),
 );

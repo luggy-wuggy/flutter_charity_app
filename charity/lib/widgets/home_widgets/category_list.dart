@@ -9,7 +9,8 @@ import 'package:get/get.dart';
 class CategoryList extends StatelessWidget {
   CategoryList({Key? key}) : super(key: key);
 
-  final CharitySearchController _charitySearchController = Get.find<CharitySearchController>();
+  final CharitySearchController _charitySearchController =
+      Get.find<CharitySearchController>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,9 @@ class CategoryOption extends StatelessWidget {
               children: [
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 320),
-                  style: _categoryController.selectedCategoryIndex == index ? kCategorySelected : kCategoryUnselected,
+                  style: _categoryController.selectedCategoryIndex == index
+                      ? kCategorySelected
+                      : kCategoryUnselected,
                   child: Text(
                     _categoryController.categories[index].title,
                   ),
@@ -64,11 +67,17 @@ class CategoryOption extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeInCirc,
-                  height: _categoryController.selectedCategoryIndex == index ? 8 : 5,
-                  width: _categoryController.selectedCategoryIndex == index ? 8 : 5,
+                  height: _categoryController.selectedCategoryIndex == index
+                      ? 8
+                      : 5,
+                  width: _categoryController.selectedCategoryIndex == index
+                      ? 8
+                      : 5,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _categoryController.selectedCategoryIndex == index ? Colors.deepOrange[300] : Colors.white,
+                    color: _categoryController.selectedCategoryIndex == index
+                        ? Color(0xFFFF8A65)
+                        : Colors.white,
                   ),
                 ),
               ],

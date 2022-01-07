@@ -105,7 +105,7 @@ class SearchBar extends StatelessWidget {
                   child: Icon(
                     Icons.search,
                     size: 28,
-                    color: Colors.grey[800],
+                    color: Color(0xFF424242),
                   ),
                 ),
               ),
@@ -154,7 +154,7 @@ class CircleAvatar extends StatelessWidget {
                 width: 15,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.deepOrange[600],
+                  color: Color(0xFFF4511E),
                   border: Border.all(
                     color: Colors.white,
                     width: 3,

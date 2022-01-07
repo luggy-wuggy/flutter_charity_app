@@ -69,11 +69,17 @@ class Page2 extends StatelessWidget {
                   },
                   controller: page2controller.textController,
                   focusNode: page2controller.focusNode,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Zip code, or city and state",
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.location_on_outlined,
                       size: 35,
+                    ),
+                    hintStyle: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        color: Color(0xFF757575),
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -93,7 +99,8 @@ class Page2 extends StatelessWidget {
                   return ListTile(
                     title: Text(suggestion.description),
                     onTap: () {
-                      page2controller.setSuggestion(suggestion.description, suggestion.placeId);
+                      page2controller.setSuggestion(
+                          suggestion.description, suggestion.placeId);
                     },
                   );
                 },
@@ -104,7 +111,8 @@ class Page2 extends StatelessWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () {
-                  authController.createUser(page2controller.textController.text);
+                  authController
+                      .createUser(page2controller.textController.text);
                 },
                 child: Container(
                   height: 60,
