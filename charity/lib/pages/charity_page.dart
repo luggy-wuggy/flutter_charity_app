@@ -1,4 +1,6 @@
 import 'package:charity/models/charity_info.dart';
+import 'package:charity/widgets/details_widgets/category_list_pills.dart';
+import 'package:charity/widgets/details_widgets/charity_mission.dart';
 import 'package:charity/widgets/details_widgets/charity_title.dart';
 import 'package:charity/widgets/details_widgets/details_header.dart';
 import 'package:flutter/material.dart';
@@ -18,23 +20,68 @@ class CharityPage extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.only(top: 60),
         color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            DetailsHeader(charity: charity),
-            const SizedBox(height: 20),
-            CharityTitle(charity: charity),
-            const SizedBox(
-              height: 10,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DetailsHeader(charity: charity),
+                const SizedBox(height: 20),
+                CharityTitle(charity: charity),
+                const SizedBox(
+                  height: 10,
+                ),
+                CategoryListPills(
+                    category: charity.category!.categoryName!,
+                    cause: charity.cause!.causeName!),
+                const SizedBox(
+                  height: 10,
+                ),
+                CharityMission(mission: charity.mission!)
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25),
+                //   child: Text(
+                //     "${charity.mission}",
+                //     style: GoogleFonts.lora(
+                //       textStyle: TextStyle(
+                //         color: Colors.grey[800],
+                //         fontSize: 13,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Text(
-                "${charity.mission}",
-                style: GoogleFonts.lora(
-                  textStyle: TextStyle(
-                    color: Colors.grey[800],
-                    fontSize: 13,
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  width: 250,
+                  margin: const EdgeInsets.only(bottom: 50),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF57b894),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFC8E6C9),
+                        blurRadius: 10,
+                        spreadRadius: 3,
+                        offset: Offset(-4, 8),
+                      ),
+                    ],
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Donate Now',
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 22,
+                      ),
+                    ),
                   ),
                 ),
               ),

@@ -39,9 +39,6 @@ class CharityTitle extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
         ],
       ),
     );
