@@ -1,4 +1,5 @@
 import 'package:charity/models/charity_info.dart';
+import 'package:charity/utils/converter_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,7 +56,7 @@ class RatingCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'B+',
+                        convertToLetterGrade(ratings.score!),
                         style: GoogleFonts.lato(
                           fontSize: 38,
                           fontWeight: FontWeight.bold,
