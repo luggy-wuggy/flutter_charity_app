@@ -49,7 +49,7 @@ class _CharityMissionState extends State<CharityMission> {
               child: Text(widget.mission, overflow: TextOverflow.clip),
             ),
           ),
-          const SizedBox(height: 10),
+          //
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -59,6 +59,7 @@ class _CharityMissionState extends State<CharityMission> {
                 opacity: widget.isExpanded ? 1 : 0,
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 400),
+                  margin: EdgeInsets.only(top: 10),
                   curve: Curves.easeInOutSine,
                   padding: EdgeInsets.symmetric(
                     horizontal: widget.isExpanded ? 8 : 0,

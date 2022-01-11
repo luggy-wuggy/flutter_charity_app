@@ -3,6 +3,7 @@ import 'package:charity/widgets/details_widgets/category_list_pills.dart';
 import 'package:charity/widgets/details_widgets/charity_mission.dart';
 import 'package:charity/widgets/details_widgets/charity_title.dart';
 import 'package:charity/widgets/details_widgets/details_header.dart';
+import 'package:charity/widgets/details_widgets/rating_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,28 +29,14 @@ class CharityPage extends StatelessWidget {
                 DetailsHeader(charity: charity),
                 const SizedBox(height: 20),
                 CharityTitle(charity: charity),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CategoryListPills(
-                    category: charity.category!.categoryName!,
-                    cause: charity.cause!.causeName!),
-                const SizedBox(
-                  height: 10,
+                  category: charity.category!.categoryName!,
+                  cause: charity.cause!.causeName!,
                 ),
-                CharityMission(mission: charity.mission!)
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 25),
-                //   child: Text(
-                //     "${charity.mission}",
-                //     style: GoogleFonts.lora(
-                //       textStyle: TextStyle(
-                //         color: Colors.grey[800],
-                //         fontSize: 13,
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                CharityMission(mission: charity.mission!),
+                const SizedBox(height: 10),
+                RatingCard()
               ],
             ),
             Align(
