@@ -36,7 +36,9 @@ class CharityPage extends StatelessWidget {
                 ),
                 CharityMission(mission: charity.mission!),
                 const SizedBox(height: 10),
-                RatingCard()
+                RatingCard(
+                  ratings: charity.currentRating!,
+                )
               ],
             ),
             Align(

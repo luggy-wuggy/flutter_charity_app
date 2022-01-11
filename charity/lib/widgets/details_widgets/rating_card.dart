@@ -1,9 +1,16 @@
+import 'package:charity/models/charity_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class RatingCard extends StatelessWidget {
-  const RatingCard({Key? key}) : super(key: key);
+  const RatingCard({
+    Key? key,
+    required this.ratings,
+  }) : super(key: key);
+
+  final CurrentRating ratings;
 
   @override
   Widget build(BuildContext context) {
@@ -112,11 +119,35 @@ class RatingCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        const LinearProgressIndicator(
-                          minHeight: 12,
-                          value: 0.8,
+                        LinearPercentIndicator(
+                          animation: true,
+                          animationDuration: 1500,
+                          curve: Curves.easeInOutQuint,
+                          lineHeight: 12,
+                          percent: (ratings.financialRating!.score! / 100),
                           backgroundColor: Color(0xFFEAEBEB),
-                          color: Color(0xFFA6D50A),
+                          progressColor: Color(0xFFA6D50A),
+                          linearStrokeCap: LinearStrokeCap.butt,
+                          leading: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                ratings.financialRating!.score!
+                                    .toStringAsFixed(1),
+                                style: GoogleFonts.lato(
+                                    color: Color(0xFF8B8989),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                '%',
+                                style: GoogleFonts.lato(
+                                    color: Color(0xFF8B8989),
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(height: 20),
                         Text(
@@ -127,11 +158,35 @@ class RatingCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        const LinearProgressIndicator(
-                          minHeight: 12,
-                          value: 0.92,
+                        LinearPercentIndicator(
+                          animation: true,
+                          animationDuration: 1800,
+                          curve: Curves.easeInOutQuint,
+                          lineHeight: 12,
+                          percent: (ratings.accountabilityRating!.score! / 100),
                           backgroundColor: Color(0xFFEAEBEB),
-                          color: Color(0xFF187754),
+                          progressColor: Color(0xFF187754),
+                          linearStrokeCap: LinearStrokeCap.butt,
+                          leading: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                ratings.accountabilityRating!.score!
+                                    .toStringAsFixed(1),
+                                style: GoogleFonts.lato(
+                                    color: const Color(0xFF8B8989),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                '%',
+                                style: GoogleFonts.lato(
+                                    color: const Color(0xFF8B8989),
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

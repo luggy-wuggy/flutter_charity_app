@@ -39,7 +39,7 @@ class _CharityMissionState extends State<CharityMission> {
             ),
           ),
           AnimatedSize(
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 650),
             alignment: Alignment.topCenter,
             curve: Curves.easeInOutBack,
             child: Container(
